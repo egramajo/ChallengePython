@@ -5,29 +5,23 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-def validar(dato, tipos):
-  for tipo in tipos:
-    try:
-      return tipo(dato)
-    except ValueError:
-      pass
-  return None
 
+#Se cargan mediante un input las coordenadas de los puntos 
 
 print("Ingrese la coord x del punto 1")
 punto1x = int(input())
-validar(punto1x, (int, float, complex))
+
 print("Ingrese la coord y del punto 1")
 punto1y = int(input())
-validar(punto1y, (int, float, complex))
+
 print("Ingrese la coord x del punto 2")
 punto2x = int(input())
-validar(punto2x, (int, float, complex))
+
 print("Ingrese la coord y del punto 2")
 punto2y = int(input())
-validar(punto2y, (int, float, complex))
 
 
+# Metodo que calcula el valor de la diagonal del rectangulo
 def calcularDiagonal():
     diferenciaX = pow(punto2x - punto1x,2)
     diferenciaY = pow(punto2y - punto1y,2)
@@ -35,16 +29,17 @@ def calcularDiagonal():
     diagonal = sqrt(diferenciaX + diferenciaY)
     return diagonal
 
-
+# Metodo que calcula la altura del rectangulo
 def calcularAltura():
     altura = punto2x - punto1x
     return altura
 
+# Metodo que calcula la base del rectangulo
 def calcularBase():
     base = punto2y - punto1y
     return base
 
-
+# Metodo que calcula el area del rectangulo
 def calcularArea():
     area = calcularBase() * calcularAltura()
     return area
